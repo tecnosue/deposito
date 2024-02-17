@@ -5,7 +5,10 @@
 package com.mycompany.cuentas;
 
 /**
- *
+ * Clase CCuenta que modela los atributos y operaciones básicas de una cuenta bancaria.
+ * Permite la gestión de un saldo, realizando operaciones de ingreso y retiro, 
+ * además de mantener información básica del titular de la cuenta.
+ * 
  * @author Susana
  */
 public class CCuenta {
@@ -14,12 +17,21 @@ public class CCuenta {
     private String cuenta;
     private double saldo;
     private double tipoInterés;
-
+    /**
+     * Constructor vacío que crea una instancia de CCuenta sin inicializar sus campos.
+     */
     public CCuenta()
     {
     }
     
-
+   /**
+     * Constructor de CCuenta que inicializa el titular, número de cuenta, saldo y tipo de interés.
+     * 
+     * @param nom Nombre del titular de la cuenta.
+     * @param cue Número de la cuenta.
+     * @param sal Saldo inicial de la cuenta.
+     * @param tipo Tipo de interés aplicable a la cuenta.
+     */
     public CCuenta(String nom, String cue, double sal, double tipo)
     {
         nombre =nom;
@@ -28,73 +40,107 @@ public class CCuenta {
     }
 
     /**
-     * @return the nombre
+     * Obtiene el nombre del titular de la cuenta.
+     * 
+     * @return Nombre del titular.
      */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
+     /**
+     * Establece el nombre del titular de la cuenta.
+     * 
+     * @param nombre Nombre del titular a establecer.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the cuenta
+     * Obtiene el número de la cuenta.
+     * 
+     * @return Número de la cuenta.
      */
     public String getCuenta() {
         return cuenta;
     }
 
-    /**
-     * @param cuenta the cuenta to set
+   /**
+     * Establece el número de la cuenta.
+     * 
+     * @param cuenta Número de la cuenta a establecer.
      */
     public void setCuenta(String cuenta) {
         this.cuenta = cuenta;
     }
 
     /**
-     * @return the saldo
+     * Obtiene el saldo actual de la cuenta.
+     * 
+     * @return Saldo actual.
      */
     public double getSaldo() {
         return saldo;
     }
 
     /**
-     * @param saldo the saldo to set
+     * Establece el saldo de la cuenta.
+     * 
+     * @param saldo Saldo a establecer.
      */
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    /**
-     * @return the tipoInterés
+   /**
+     * Obtiene el tipo de interés de la cuenta.
+     * 
+     * @return Tipo de interés.
      */
     public double getTipoInterés() {
         return tipoInterés;
     }
 
-    /**
-     * @param tipoInterés the tipoInterés to set
+   /**
+     * Establece el tipo de interés de la cuenta.
+     * 
+     * @param tipoInterés Tipo de interés a establecer.
      */
     public void setTipoInterés(double tipoInterés) {
         this.tipoInterés = tipoInterés;
     }
-
+    
+    /**
+     * Devuelve el saldo actual de la cuenta.
+     * 
+     * @return Saldo actual de la cuenta.
+     */
     public double estado()
     {
         return getSaldo();
     }
 
+    
+   /**
+     * Ingresa una cantidad en la cuenta, incrementando el saldo.
+     * 
+     * @param cantidad Cantidad a ingresar.
+     * @throws Exception Si la cantidad es menor que 0, lanza una excepción.
+     */
     public void ingresar(double cantidad) throws Exception
     {
         if (cantidad<0)
             throw new Exception("No se puede ingresar una cantidad negativa");
         setSaldo(getSaldo() + cantidad);
     }
-
+    
+    /**
+     * Retira una cantidad de la cuenta, disminuyendo el saldo.
+     * 
+     * @param cantidad Cantidad a retirar.
+     * @throws Exception Si la cantidad es menor o igual a 0, o si el saldo es insuficiente, lanza una excepción.
+     */
     public void retirar(double cantidad) throws Exception
     {
         if (cantidad <= 0)
